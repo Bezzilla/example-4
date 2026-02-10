@@ -21,10 +21,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright system dependencies
+        run: npx playwright install-deps
 
-      - name: Start services
+      - name: Install Playwright browsers
+        run: npx playwright install
+
+      - name: Start microservices
         run: docker compose up -d
 
       - name: Run Playwright tests
