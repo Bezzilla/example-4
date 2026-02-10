@@ -22,16 +22,16 @@ jobs:
         run: npm install
 
       - name: Install Playwright system dependencies
-        run: npm exec -- playwright install-deps
+        run: node node_modules/@playwright/test/cli.js install-deps
 
       - name: Install Playwright browsers
-        run: npm exec -- playwright install
+        run: node node_modules/@playwright/test/cli.js install
 
       - name: Start microservices
         run: docker compose up -d
 
       - name: Run Playwright tests
-        run: npm exec -- playwright test
+        run: node node_modules/@playwright/test/cli.js test
 
       - name: Stop services
         if: always()
